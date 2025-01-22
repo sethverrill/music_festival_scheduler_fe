@@ -70,11 +70,41 @@ const UserItinerary = () => {
                 <strong>Time Slot:</strong> {getTimeSlot(show.time_slot)}
               </p>
               <p>
-                <strong>Artist:</strong> {show.artist?.name || "Unknown"}
+                <strong>Artist:</strong> {show.artist?.name}
               </p>
               <p>
-                <strong>Venue:</strong> {show.venue?.name || "Unknown"}
+                <strong>Venue:</strong> {show.venue?.name}
               </p>
+              <button
+                onClick={() => {
+                  fetch(`http://localhost:3000/api/v1/shows/${show.id}`, {
+                    method: "DELETE",
+                  })
+                    .then((response) => {
+                      if (!response.ok) {
+                        throw new Error("Failed to delete show");
+                      }
+                      setUser((prevUser) => {
+                        const updatedShows = prevUser.attributes.schedule.shows.filter(
+                          (sho) => sho.id !== show.id
+                        );
+                        return {
+                          ...prevUser,
+                          attributes: {
+                            ...prevUser.attributes,
+                            schedule: {
+                              ...prevUser.attributes.schedule,
+                              shows: updatedShows,
+                            },
+                          },
+                        };
+                      });
+                    })
+                    .catch((error) => console.error("Error deleting show:", error))
+                }}
+              >
+              Delete
+              </button>
             </li>
           ))}
         </ul>
