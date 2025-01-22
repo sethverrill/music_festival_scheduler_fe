@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route } from 'react-router-dom';
 import UserIndex from './components/UserIndex';
 import UserItinerary from './components/UserItinerary';
+import './App.css';
+
 
 function App() {
   const [users, setUsers] = useState([]);

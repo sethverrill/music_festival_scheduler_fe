@@ -1,5 +1,7 @@
 import React from "react"; 
 import { Link } from "react-router-dom"
+import './UserIndex.css';
+
 
 const UserIndex = ({ users, error }) => {
   if (error) {

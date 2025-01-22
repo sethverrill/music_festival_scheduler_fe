@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import './UserItinerary.css';
+
 
 const UserItinerary = () => {
   const { id } = useParams();
@@ -40,6 +42,20 @@ const UserItinerary = () => {
 
   const schedule = user.attributes.schedule || {};
   const shows = schedule.shows || {};
+  const getTimeSlot = (timeSlot) => {
+    const timeSlots = {
+      1: "4:00 PM - 4:45 PM",
+      2: "5:00 PM - 5:45 PM",
+      3: "6:00 PM - 6:45 PM",
+      4: "7:00 PM - 7:45 PM",
+      5: "8:00 PM - 8:45 PM",
+      6: "9:00 PM - 9:45 PM",
+      7: "10:00 PM - 10:45 PM",
+      8: "11:00 PM - 11:45 PM"
+    };
+
+    return timeSlots[timeSlot] || "Unknown Time Slot";
+  };
 
   return (
     <section aria-labelledby="itinerary">
@@ -51,7 +67,7 @@ const UserItinerary = () => {
           {shows.map((show) => (
             <li key={show.id}>
               <p>
-                <strong>Time Slot:</strong> {show.time_slot}
+                <strong>Time Slot:</strong> {getTimeSlot(show.time_slot)}
               </p>
               <p>
                 <strong>Artist:</strong> {show.artist?.name || "Unknown"}
