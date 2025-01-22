@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from 'react-router-dom';
 import UserIndex from './components/UserIndex';
 import UserItinerary from './components/UserItinerary';
@@ -16,24 +16,24 @@ function App() {
         return response.json();
       })
       .then((data) => {
-        setUsers(data.data);
+        setUsers(data.data || []);
       })
       .catch((error) => setError(error.message));
   }, []);
 
   return (
-    <body>
+    <main>
       <header>
-        <h1>Music Festive Scheduler</h1>
+        <h1>Music Festival Scheduler</h1>
         <h2>Admin Panel</h2>
       </header>
       <section>
         <Routes>
-          <Route path="/" element={<UserIndex />} />
+          <Route path="/" element={<UserIndex users={users} error={error} />} />
           <Route path="/user/:id" element={<UserItinerary />} />
         </Routes>
       </section>
-    </body>
+    </main>
   )
 }
 
