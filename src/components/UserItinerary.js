@@ -23,7 +23,7 @@ const UserItinerary = () => {
 
   if (error) {
     return (
-      <section>
+      <section role="alert">
         <p>Error: {error}</p>
         <button onClick={() => navigate("/")}>Back to User List</button>
       </section>
@@ -42,8 +42,8 @@ const UserItinerary = () => {
   const shows = schedule.shows || {};
 
   return (
-    <section>
-      <h2>{user.attributes.first_name}'s Itinerary</h2>
+    <section aria-labelledby="itinerary">
+      <h2 id="itinerary">{user.attributes.first_name}'s Itinerary</h2>
       <h3>Schedule</h3>
       <h3>Shows</h3>
       {shows.length > 0 ? (
