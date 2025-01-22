@@ -1,0 +1,39 @@
+section {
+  background-color: #fff;
+  border: 0.125rem solid #c6c6c6;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+h3 {
+  color: #555555;
+  border-bottom: 0.0625rem solid #c6c6c6;
+  padding-bottom: 0.25rem;
+  font-size: 1.25rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 0.5rem 0;
+  border-bottom: 0.0625rem solid #e0e0e0;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li a {
+  color: #0056b3;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+li a:hover {
+  text-decoration: underline;
+  color: #004085;
+}
